@@ -14,13 +14,16 @@ const Icon = (props: IconProps) => {
         16: 'size-16',
     }
 
-    const variants = {
+    const variants : IconVariantType = {
         "primary": "fill-primary",
         "primary-100": "fill-[#718EBF]",
         "white": "fill-white",
         "blue": "fill-[#396AFF]",
         "secondary": "fill-secondary",
         "grey": "fill-grey",
+        "yellow": "fill-[#FFBB38]",
+        "blue-light": "fill-[#396AFF]",
+        "green": "fill-[#16DBCC]"
     }
 
     return (

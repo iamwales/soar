@@ -1,7 +1,7 @@
 "use client"
 import Icon from "@/components/Icon";
 import Link from "next/link";
-import {toggleNav} from "@/store/slices/navSlice";
+import {toggleNav} from "@/redux/slices/navSlice";
 import {useDispatch} from "react-redux";
 
 const Header: React.FC = () => {

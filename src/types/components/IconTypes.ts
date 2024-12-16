@@ -1,5 +1,5 @@
 export type IconProps = {
-    type?: 'primary' | 'white' | 'primary-100' | 'blue' | 'secondary' | 'grey';
+    type?: 'primary' | 'white' | 'primary-100' | 'blue' | 'secondary' | 'grey' | 'yellow' | 'blue-light' | 'green';
     name: string;
     className?: string;
     size?: number;
