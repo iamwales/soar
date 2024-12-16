@@ -6,7 +6,6 @@ import {updateTransactions} from "@/redux/slices/dashboardSlice";
 import {RootState} from "@/redux";
 import {TransactionType} from "@/types/components/TransactionType";
 import Transaction from "@/components/Transaction";
-import icon from "@/components/Icon";
 
 const Transactions = () => {
 
