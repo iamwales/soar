@@ -9,7 +9,7 @@ import Icon from "@/components/Icon";
 import {usePathname} from "next/navigation";
 import Link from "next/link";
 import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "@/store";
+import {RootState} from "../../redux";
 
 const SideNav: React.FC = () => {
 
