@@ -11,7 +11,15 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        primary: "var(--primary)",
       },
+      fontFamily: {
+        sans: ["var(--font-inter)", "sans-serif"],
+        lato: ["var(--font-lato)", "sans-serif"],
+      },
+      borderRadius: {
+        '3xl': '1.563rem'
+      }
     },
   },
   plugins: [],
