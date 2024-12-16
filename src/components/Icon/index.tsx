@@ -15,7 +15,9 @@ const Icon = (props: IconProps) => {
 
     const variants : IconVariantType = {
         'primary': "fill-primary",
+        'primary-100': 'fill-[#718EBF]',
         'white': "fill-white",
+        "blue": "fill-[#396AFF]"
     }
 
     return (<div data-testid={dataTestId} className={`group icon ${sizes[size || 6]} ${mainClassName}`}>
