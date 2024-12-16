@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Lato, Inter } from "next/font/google";
+import {ReduxProvider} from "@/store/ReduxProvider";
 import "./globals.css";
+import SideNav from "@/components/SideNav";
+import Header from "@/components/Header";
 
 // Configure Inter as the base font
 const inter = Inter({
@@ -30,9 +33,22 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${lato.variable} font-sans`}
+        className={`${inter.variable} ${lato.variable} font-sans flex h-screen`}
       >
-        {children}
+      <ReduxProvider>
+          {/* SideNav */}
+          <SideNav />
+
+          <div className="flex flex-col flex-1 overflow-hidden">
+              {/* TopNav */}
+              <Header />
+
+              {/* Page Content */}
+              <main className="p-6 overflow-auto bg-background h-full">
+                  {children}
+              </main>
+          </div>
+      </ReduxProvider>
       </body>
     </html>
   );
