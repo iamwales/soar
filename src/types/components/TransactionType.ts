@@ -3,7 +3,7 @@ export type TransactionType = {
     amount: number;
     icon: string;
     iconType: 'primary' | 'white' | 'primary-100' | 'blue' | 'secondary' | 'grey' | 'yellow' | 'blue-light' | 'green';
-    date: Date;
+    date: string;
     title: string;
     currency: string;
 }

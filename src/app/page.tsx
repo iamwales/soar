@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Card from "@/components/Card";
 import {Currency} from "@/utils/enums/currency";
+import Transactions from "@/app/dashboard/Transactions";
 
 export default function Home() {
   return (
@@ -19,7 +20,7 @@ export default function Home() {
           </div>
 
           <div className={"col-span-1"}>
-              <p className={"text-2xl text-primary font-semibold"}>Recent Transaction</p>
+              <Transactions />
           </div>
       </div>
   );

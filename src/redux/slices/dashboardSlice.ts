@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {Transaction} from "@/types/dashboard";
+import {TransactionType} from "@/types/components/TransactionType";
 
 interface NavState {
-    transactions: Transaction[];
+    transactions: TransactionType[];
 }
 
 const initialState: NavState = {
