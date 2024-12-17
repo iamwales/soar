@@ -27,7 +27,6 @@ const Transactions = () => {
         }
     }
 
-    console.log("transactions", transactions);
 
     useEffect(() => {
         handleGetTransactions();

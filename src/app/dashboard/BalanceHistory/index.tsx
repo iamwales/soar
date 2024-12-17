@@ -54,6 +54,7 @@ const BalanceHistory = () => {
 
           return gradientBg;
         },
+        pointRadius: 0,
         tension: 0.4,
         fill: true,
       },
@@ -67,17 +68,24 @@ const BalanceHistory = () => {
       y: {
         beginAtZero: true,
         grid: {
+          color: "rgba(223, 229, 238, 1)",
+        },
+        border: {
+          dash: [10, 10],
+        },
+        ticks: {
           display: true,
-          borderDash: [5, 5],
-          drawTicks: true,
         },
       },
     },
     x: {
       grid: {
-        display: true,
-        borderDash: [5, 5],
+        color: "rgba(223, 229, 238, 1)",
       },
+      border: {
+        dash: [2, 4],
+      },
+      ticks: { display: true },
     },
   };
 
