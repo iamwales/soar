@@ -1,5 +1,4 @@
 import {CardType} from "@/types/components/CardType";
-import Image from "next/image";
 import Icon from "@/components/Icon";
 import {formatToCurrency} from "@/utils";
 

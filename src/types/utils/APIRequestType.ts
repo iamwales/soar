@@ -1,20 +1,19 @@
-import exp from "node:constants";
-
-export interface ApiResponse<T = any> {
-    status: number;
-    data: T;
-    message: string;
+export interface ApiResponse<T = unknown> {
+  status: number;
+  data: T;
+  message: string;
 }
 
-export interface ApiError {
-    status: number;
-    message: string;
+export interface ApiError<T = unknown> {
+  status: number;
+  message: string;
+  data: T;
 }
 
 export type MockApiRequestOptions = {
-    url: string;
-    method?: 'GET' | 'POST' | 'PUT' | 'DELETE';
-    body?: any;
-    statusCode?: number;
-    delay?: number;
+  url: string;
+  method?: "GET" | "POST" | "PUT" | "DELETE";
+  body?: unknown;
+  statusCode?: number;
+  delay?: number;
 };

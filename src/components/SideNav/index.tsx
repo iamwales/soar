@@ -8,15 +8,14 @@ import {SideNavType} from "@/types/utils/sideNavType";
 import Icon from "@/components/Icon";
 import {usePathname} from "next/navigation";
 import Link from "next/link";
-import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "../../redux";
+import { useSelector} from "react-redux";
+import {RootState} from "@/redux";
 
 const SideNav: React.FC = () => {
 
     const pathname = usePathname();
 
     const isOpen = useSelector((state: RootState) => state.nav.isOpen);
-    const dispatch = useDispatch();
 
     return (
         <div className={`bg-white border-r border-[#E6EFF5] md:block ${isOpen ? "block" : "hidden" }`}>

@@ -1,7 +1,7 @@
 import {ApiError, ApiResponse, MockApiRequestOptions} from "@/types/utils/APIRequestType";
 
 export const mockApiRequest = <T>(options: MockApiRequestOptions): Promise<ApiResponse<T> | ApiError> => {
-    const { url, method = 'GET', body, statusCode = 200, delay = 100 } = options;
+    const { method = 'GET', body, statusCode = 200, delay = 100 } = options;
 
     return new Promise((resolve, reject) => {
         setTimeout(() => {

@@ -1,7 +1,7 @@
 import React from "react";
 import {AmountVariantsType, BgVariantsType, TransactionType} from "@/types/components/TransactionType";
 import Icon from "@/components/Icon";
-import {formatDate, formatToCurrency} from "@/utils";
+import { formatToCurrency} from "@/utils";
 
 const Transaction = (props: TransactionType) => {
 
