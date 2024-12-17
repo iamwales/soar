@@ -38,11 +38,12 @@ const ExpensesStatistics = () => {
       },
       datalabels: {
         formatter: (value: string, context: { dataIndex: number }) => {
-          return [`${value}% ${labels[context.dataIndex]}`];
+          return `${value}% \n ${labels[context.dataIndex]}`;
         },
         color: "#fff",
         font: {
-          size: 14,
+          size: 16,
+          weight: 700,
         },
       },
     },

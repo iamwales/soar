@@ -4,6 +4,8 @@ import { Currency } from "@/utils/enums/currency";
 import Transactions from "@/app/dashboard/Transactions";
 import WeeklyActivity from "./dashboard/WeeklyActivity";
 import ExpensesStatistics from "./dashboard/ExpensesStatistics";
+import QuickTransfer from "./dashboard/QuickTransfer";
+import BalanceHistory from "./dashboard/BalanceHistory";
 
 export default function Home() {
   return (
@@ -46,6 +48,14 @@ export default function Home() {
 
       <div className='col-span-1'>
         <ExpensesStatistics />
+      </div>
+
+      <div className='col-span-1'>
+        <QuickTransfer />
+      </div>
+
+      <div className='col-span-1 md:col-span-2'>
+        <BalanceHistory />
       </div>
     </div>
   );
