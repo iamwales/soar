@@ -21,7 +21,7 @@ const SideNav: React.FC = () => {
     return (
         <div className={`bg-white border-r border-[#E6EFF5] md:block ${isOpen ? "block" : "hidden" }`}>
             <div className="p-8">
-                <Image src={SoarLogo} alt={"Soar Logo"} />
+                <Image src={SoarLogo} alt={"Soar Logo"} priority={true} />
             </div>
 
             <div className="relative grid grid-cols-1">

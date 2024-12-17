@@ -1,6 +1,6 @@
 "use client";
 import { useForm, SubmitHandler } from "react-hook-form";
-import {Avatar, createToaster, Toast, Toaster} from "@ark-ui/react";
+import { Avatar } from "@ark-ui/react";
 import Icon from "@/components/Icon";
 import Input from "@/components/Input";
 import { useEffect, useRef, useState } from "react";
@@ -59,26 +59,12 @@ const Profile = () => {
   );
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-  const toaster = createToaster({
-    placement: 'top-end',
-    overlap: true,
-    gap: 24,
-  })
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     setLoading(true);
     const response = await updateUserProfile(data);
 
-    console.log(response);
-
     if (response && response.data) {
-
-      toaster.create({
-        title: 'Successfully Updated',
-        description: 'Profile has been successfully updated.',
-        type: 'info',
-      });
-
 
       setLoading(false);
       dispatch(updateUser(response.data));
@@ -105,152 +91,143 @@ const Profile = () => {
   };
 
   return (
-    <div className={"my-16"}>
-      <Toaster toaster={toaster}>
-        {(toast) => (
-            <Toast.Root key={toast.id}>
-              <Toast.Title>{toast.title}</Toast.Title>
-              <Toast.Description>{toast.description}</Toast.Description>
-              <Toast.CloseTrigger>
-                X
-              </Toast.CloseTrigger>
-            </Toast.Root>
-        )}
-      </Toaster>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className='flex flex-wrap gap-12 space-y-6'
-      >
-        {/* User Info */}
-        <div className='relative space-x-6'>
-          <Avatar.Root className='relative rounded-full w-40 h-40 bg-black text-center text-white flex justify-center items-center'>
-            <Avatar.Fallback
-              className={"rounded-full font-bold text-5xl text-center "}
-            >
-              PA
-            </Avatar.Fallback>
-            <Avatar.Image
-              className={"rounded-full w-40 h-40"}
-              src={imageSrc}
-              alt='avatar'
-            />
+      <div className={"my-16"}>
 
-            <div
-              className='absolute bottom-1 right-4 bg-[#232323] p-2 rounded-full cursor-pointer'
-              aria-label='Change Profile Picture'
-              onClick={openImage}
-            >
-              <Icon name={"pen"} size={4} type={"white"} />
+        <form
+            onSubmit={handleSubmit(onSubmit)}
+            className='flex flex-wrap gap-12 space-y-6'
+        >
+          {/* User Info */}
+          <div className='relative space-x-6'>
+            <Avatar.Root
+                className='relative rounded-full w-40 h-40 bg-black text-center text-white flex justify-center items-center'>
+              <Avatar.Fallback
+                  className={"rounded-full font-bold text-5xl text-center "}
+              >
+                PA
+              </Avatar.Fallback>
+              <Avatar.Image
+                  className={"rounded-full w-40 h-40"}
+                  src={imageSrc}
+                  alt='avatar'
+              />
+
+              <div
+                  className='absolute bottom-1 right-4 bg-[#232323] p-2 rounded-full cursor-pointer'
+                  aria-label='Change Profile Picture'
+                  onClick={openImage}
+              >
+                <Icon name={"pen"} size={4} type={"white"}/>
+              </div>
+            </Avatar.Root>
+
+            <input
+                type='file'
+                accept='image/*'
+                ref={fileInputRef}
+                onChange={handleImageChange}
+                className='hidden'
+            />
+          </div>
+
+          <div className='flex-1'>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+              {/* Name */}
+              <Input
+                  label={"Your Name"}
+                  placeholder={"Charlene Reed"}
+                  register={register("name", {required: "Name is required"})}
+                  error={errors.name?.message}
+              />
+
+              {/* Username */}
+              <Input
+                  label={"User Name"}
+                  placeholder={"Charlene Reed"}
+                  register={register("username", {
+                    required: "Username is required",
+                  })}
+                  error={errors.username?.message}
+              />
+
+              {/* Email */}
+              <Input
+                  label={"Email"}
+                  placeholder={"charlenereed@gmail.com"}
+                  register={register("email", {
+                    required: "Email is required",
+                    pattern: {
+                      value: /^\S+@\S+$/i,
+                      message: "Invalid email address",
+                    },
+                  })}
+                  error={errors.email?.message}
+              />
+
+              {/* Password */}
+              <Input
+                  label={"Password"}
+                  placeholder={"*******"}
+                  register={register("password", {
+                    required: "Password is required",
+                  })}
+                  error={errors.password?.message}
+              />
+
+              {/* Date of Birth */}
+              <Input
+                  label={"Date of Birth"}
+                  placeholder={"25 January 1990"}
+                  register={register("dob")}
+              />
+
+              {/* Address */}
+              <Input
+                  label={"Present Address"}
+                  placeholder={"San Jose, California, USA"}
+                  register={register("presentAddress")}
+              />
+
+              <Input
+                  label={"Permanent Address"}
+                  placeholder={"San Jose, California, USA"}
+                  register={register("permanentAddress")}
+              />
+
+              {/* Postal Code */}
+              <Input
+                  label={"Postal Code"}
+                  placeholder={"45962"}
+                  register={register("postalCode")}
+              />
+
+              {/* City */}
+              <Input
+                  label={"City"}
+                  placeholder={"San Jose"}
+                  register={register("city")}
+              />
+
+              {/* Country */}
+              <Input
+                  label={"Country"}
+                  placeholder={"USA"}
+                  register={register("country")}
+              />
             </div>
-          </Avatar.Root>
 
-          <input
-            type='file'
-            accept='image/*'
-            ref={fileInputRef}
-            onChange={handleImageChange}
-            className='hidden'
-          />
-        </div>
-
-        <div className='flex-1'>
-          <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
-            {/* Name */}
-            <Input
-              label={"Your Name"}
-              placeholder={"Charlene Reed"}
-              register={register("name", { required: "Name is required" })}
-              error={errors.name?.message}
-            />
-
-            {/* Username */}
-            <Input
-              label={"User Name"}
-              placeholder={"Charlene Reed"}
-              register={register("username", {
-                required: "Username is required",
-              })}
-              error={errors.username?.message}
-            />
-
-            {/* Email */}
-            <Input
-              label={"Email"}
-              placeholder={"charlenereed@gmail.com"}
-              register={register("email", {
-                required: "Email is required",
-                pattern: {
-                  value: /^\S+@\S+$/i,
-                  message: "Invalid email address",
-                },
-              })}
-              error={errors.email?.message}
-            />
-
-            {/* Password */}
-            <Input
-              label={"Password"}
-              placeholder={"*******"}
-              register={register("password", {
-                required: "Password is required",
-              })}
-              error={errors.password?.message}
-            />
-
-            {/* Date of Birth */}
-            <Input
-              label={"Date of Birth"}
-              placeholder={"25 January 1990"}
-              register={register("dob")}
-            />
-
-            {/* Address */}
-            <Input
-              label={"Present Address"}
-              placeholder={"San Jose, California, USA"}
-              register={register("presentAddress")}
-            />
-
-            <Input
-              label={"Permanent Address"}
-              placeholder={"San Jose, California, USA"}
-              register={register("permanentAddress")}
-            />
-
-            {/* Postal Code */}
-            <Input
-              label={"Postal Code"}
-              placeholder={"45962"}
-              register={register("postalCode")}
-            />
-
-            {/* City */}
-            <Input
-              label={"City"}
-              placeholder={"San Jose"}
-              register={register("city")}
-            />
-
-            {/* Country */}
-            <Input
-              label={"Country"}
-              placeholder={"USA"}
-              register={register("country")}
-            />
+            {/* Save Button */}
+            <div className='flex flex-row-reverse mt-6'>
+              <button
+                  type='submit'
+                  className='bg-black text-white px-6 py-2 rounded hover:bg-gray-800'
+              >
+                Save
+              </button>
+            </div>
           </div>
-
-          {/* Save Button */}
-          <div className='flex flex-row-reverse mt-6'>
-            <button
-              type='submit'
-              className='bg-black text-white px-6 py-2 rounded hover:bg-gray-800'
-            >
-              Save
-            </button>
-          </div>
-        </div>
-      </form>
-    </div>
+        </form>
+      </div>
   );
 };
 
