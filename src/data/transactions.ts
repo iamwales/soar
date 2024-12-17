@@ -1,8 +1,6 @@
 import {TransactionType} from "@/types/components/TransactionType";
 import {Currency} from "@/utils/enums/currency";
 
-const currentDate = new Date();
-
 export const transactions: TransactionType[] = [
     {
         type: 'debit',
