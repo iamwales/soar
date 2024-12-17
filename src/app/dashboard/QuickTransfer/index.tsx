@@ -18,6 +18,7 @@ const QuickTransfer = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [currentSelectedUser, setCurrentSelectedUser] = useState<number>(1);
   const [amount, setAmount] = useState<number>(0);
+  const [message, setMessage] = useState("");
 
   const handleGetUsers = async () => {
     setLoading(true);
@@ -40,6 +41,12 @@ const QuickTransfer = () => {
   };
 
   const handleSend = async () => {
+
+    if(amount <= 0) {
+      setMessage("Please provide a valid amount!");
+      return;
+    }
+
     const data = {
       amount: amount,
       userId: currentSelectedUser,
@@ -48,12 +55,19 @@ const QuickTransfer = () => {
 
     if (response && response.data) {
       //  toast money send successfully
+      setMessage("Sent Successfully!");
     }
   };
 
+  useEffect(() => {
+    if(message) {
+      setTimeout(() => setMessage(""), 1000);
+    }
+  }, [message])
+
   return (
     <div>
-      <p className={"text-2xl text-primary font-semibold"}>Weekly Activity</p>
+      <p className={"text-2xl text-primary font-semibold"}>Quick Transfer</p>
 
       <div className={"bg-white rounded-3xl p-6 py-16 mt-4"}>
         {loading && (
@@ -116,7 +130,7 @@ const QuickTransfer = () => {
 
             <button
               onClick={handleSend}
-              className='flex items-center text-base justify-center bg-[#232323] text-white px-5 rounded-full hover:bg-gray-800 focus:outline-none'
+              className='flex items-center text-base justify-center bg-secondary text-white px-5 rounded-full hover:bg-primary focus:outline-none'
             >
               Send
               <span className='ml-2'>
@@ -125,6 +139,8 @@ const QuickTransfer = () => {
             </button>
           </div>
         </div>
+
+        {message && <p className={"text-green-500 text-sm"}>{message}</p>}
       </div>
     </div>
   );

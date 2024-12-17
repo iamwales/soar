@@ -39,6 +39,7 @@ const Profile = () => {
   });
 
   const [loading, setLoading] = useState<boolean>(true);
+  const [message, setMessage] = useState("");
 
   const handleGetUserProfile = async () => {
     setLoading(true);
@@ -66,6 +67,8 @@ const Profile = () => {
     const response = await updateUserProfile(data);
 
     if (response && response.data) {
+      setMessage("Profile updated successfully!");
+
       setLoading(false);
       dispatch(updateUser(response.data));
     }
@@ -90,10 +93,17 @@ const Profile = () => {
     fileInputRef.current?.click();
   };
 
+  useEffect(() => {
+    if(message) {
+      setTimeout(() => setMessage(""), 2000)
+    }
+  }, [message]);
+
   return (
     <div className={"my-16"}>
       <div className="h-4">
         {loading && <p className={"text-center text-base italic"}>Loading...</p>}
+        {message && <p className={"text-green-500 text-2xl text-center"}>{message}</p> }
       </div>
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -158,7 +168,7 @@ const Profile = () => {
               register={register("email", {
                 required: "Email is required",
                 pattern: {
-                  value: /^\S+@\S+$/i,
+                  value: /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/i,
                   message: "Invalid email address",
                 },
               })}
