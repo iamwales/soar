@@ -12,6 +12,7 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         primary: "var(--primary)",
+        'primary-100': "var(--primary-100)",
         secondary: "var(--secondary)",
         grey: "var(--grey)",
       },
