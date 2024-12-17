@@ -13,7 +13,7 @@ export default function Home() {
       <div className={"col-span-1 md:col-span-2"}>
         <div className='flex justify-between items-center'>
           <p className={"text-2xl text-primary font-semibold"}>My Cards</p>
-          <Link href={"#"} className={"text-xl text-primary font-semibold"}>
+          <Link href={"#"} className={"text-xl text-primary font-semibold hover:text-primary-100"}>
             See All
           </Link>
         </div>
